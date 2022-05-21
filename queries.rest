@@ -20,3 +20,6 @@ content-type: application/json
     }
   ]
 }
+
+##################################
+GET http://localhost:8000/api/v1/menus/62886863a457477e468538c4

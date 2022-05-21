@@ -23,6 +23,11 @@ app.get('/api/v1/menus', async (req, res) => {
   res.json(menus)
 })
 
+app.get('/api/v1/menus/:menuId', async (req, res) => {
+  const menu = await Menu.findById(req.params.menuId)
+  res.json(menu)
+})
+
 app.post('/api/v1/menus', async ({body}, res) => {
   const newMenu = await Menu.createOne(body);
   res.json(newMenu)

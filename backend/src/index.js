@@ -12,6 +12,12 @@ const staticFiles = express.static(path.join(__dirname, '..', 'build'));
 app.use(staticFiles);
 app.use(express.json());
 
+app.get('*', (req, res, next) => {
+  console.log('req.originalUrl catch: ', req.originalUrl);
+  if (req.originalUrl.includes('/api')) return next();
+  return res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.get('/api/v1/menus', async (req, res) => {
   const menus = await Menu.findAll()
   res.json(menus)

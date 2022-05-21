@@ -1,0 +1,17 @@
+GET http://localhost:8000/api/v1/menus
+
+################################
+POST http://localhost:8000/api/v1/menus
+content-type: application/json
+
+{
+  "name": "Menu 2",
+  "numberOfPallets": 3,
+  "items": [
+    {
+      "name": "Milk",
+      "itemsPerBag": 1,
+      "itemsPerPack": 12
+    }
+  ]
+}

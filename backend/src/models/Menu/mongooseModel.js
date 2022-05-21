@@ -8,7 +8,7 @@ const itemSchema = new mongoose.Schema({
 
 const menuSchema = new mongoose.Schema({
   name: String,
-  numberOfMeals: Number,
+  numberOfPallets: Number,
   items: [itemSchema],
 })
 

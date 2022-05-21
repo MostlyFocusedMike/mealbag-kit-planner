@@ -1,8 +1,8 @@
 const { menuMongooseModel } = require("./mongooseModel");
 
 class Menu {
-  static createOne = async (name, numberOfMeals = 180, items = []) => {
-    return this.model.create({ name, numberOfMeals, items })
+  static createOne = async ({name, numberOfPallets = 180, items = []}) => {
+    return this.model.create({ name, numberOfPallets, items })
   }
 
   static findById = async (id) => {

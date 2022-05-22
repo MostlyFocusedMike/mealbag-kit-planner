@@ -19,7 +19,7 @@ class Menu {
 
 
   static update = async (id, newMenu) => {
-    return this.model.updateOne({_id: id}, {$set: newMenu});
+    return this.model.findOneAndUpdate({_id: id}, {$set: newMenu}, {new: true});
   }
 
   static delete = async (id) => {

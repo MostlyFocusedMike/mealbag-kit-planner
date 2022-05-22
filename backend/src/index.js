@@ -15,7 +15,7 @@ app.use(express.json());
 app.get('*', (req, res, next) => {
   console.log('req.originalUrl catch: ', req.originalUrl);
   if (req.originalUrl.includes('/api')) return next();
-  return res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  return res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 });
 
 app.get('/api/v1/menus', async (req, res) => {

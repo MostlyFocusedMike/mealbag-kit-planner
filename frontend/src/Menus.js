@@ -6,12 +6,8 @@ const Menus = () => {
   useEffect(() => {
     fetch('/api/v1/menus').then(r=>r.json()).then(setMenus);;
   }, []);
-  useEffect(() => {
-    console.log('menus:', menus);
-  }, [menus])
-  // <Link to="/">Home</Link> |{" "}
-  // <Link to="">About</Link> <Link to="/">Home</Link> |{" "}
-  // <Link to="">About</Link>
+
+  useEffect(() => { console.log('menus:', menus); }, [menus])
   if (!menus) return;
   return <div>
     <h1>Menus</h1>

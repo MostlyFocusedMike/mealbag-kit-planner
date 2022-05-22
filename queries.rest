@@ -17,6 +17,11 @@ content-type: application/json
       "name": "Pancake Mix",
       "itemsPerBag": 2,
       "itemsPerPack": 10
+    },
+    {
+      "name": "GoGo Yogurt",
+      "itemsPerBag": 1,
+      "itemsPerPack": 20
     }
   ]
 }

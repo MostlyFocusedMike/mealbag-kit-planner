@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const itemSchema = new mongoose.Schema({
   name: String,
   itemsPerBag: Number,
-  itemsPerPackage: Number,
+  itemsPerPack: Number,
 })
 
 const menuSchema = new mongoose.Schema({

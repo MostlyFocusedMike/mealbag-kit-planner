@@ -6,3 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+table, td, th {
+  border: 2px solid #555;
+  border-collapse: collapse;
+  padding: 0.1rem 0.5rem;
+}

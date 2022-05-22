@@ -3,7 +3,7 @@ import MenuTableView from './MenuTableView';
 function App() {
   return (
     <div className="App">
-      <MenuTableView />
+      <h1>Home</h1>
     </div>
   );
 }

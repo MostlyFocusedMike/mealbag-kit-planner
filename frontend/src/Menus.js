@@ -17,7 +17,16 @@ const Menus = () => {
     <h1>Menus</h1>
     <nav>
       {
-        menus.map(menu => <Link key={menu.id} to={`/menus/${menu.id}`}>{menu.name} | </Link>)
+        menus.map(menu => (
+          <Link
+            key={menu.id}
+            to={`/menus/${menu.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {menu.name} |
+          </Link>)
+        )
       }
     </nav>
   </div>

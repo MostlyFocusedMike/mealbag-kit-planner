@@ -5,8 +5,8 @@ POST http://localhost:8000/api/v1/menus
 content-type: application/json
 
 {
-  "name": "Menu 2",
-  "numberOfPallets": 6,
+  "name": "Menu 1",
+  "numberOfPallets": 4,
   "items": [
     {
       "name": "Milk",
@@ -19,9 +19,19 @@ content-type: application/json
       "itemsPerPack": 10
     },
     {
+      "name": "Fruit Cup",
+      "itemsPerBag": 1,
+      "itemsPerPack": 18
+    },
+    {
       "name": "GoGo Yogurt",
       "itemsPerBag": 1,
       "itemsPerPack": 20
+    },
+    {
+      "name": "Granola Bar",
+      "itemsPerBag": 1,
+      "itemsPerPack": 8
     }
   ]
 }

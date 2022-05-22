@@ -1,14 +1,13 @@
 import {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 
 function MenuTableView() {
+  let params = useParams()
   const [menu, setMenu] = useState(null);
   useEffect(() =>  {
-    fetch('/api/v1/menus/6289957ef618b5d92e3af7f9').then(r=>r.json()).then(setMenu)
-  }, [])
-
-  useEffect(() => {
-    console.log('menu:', menu);
-  }, [menu])
+    const route = `/api/v1/menus/${params.menuId}`
+    if (params.menuId) fetch(route).then(r=>r.json()).then(setMenu)
+  }, [params])
 
   if (!menu) return null;
 

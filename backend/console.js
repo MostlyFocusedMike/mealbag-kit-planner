@@ -1,3 +1,4 @@
+require('dotenv').config()
 const fs = require('fs');
 const path = require('path');
 const repl = require('repl')
@@ -14,7 +15,7 @@ const loadModels = (context) => {
     context[name] = require(filePath);
   });
   const mongoose = require('mongoose');
-  mongoose.connect(`mongodb+srv://admin:${process.env.MONGO_PW}@cluster0.hqyzi.mongodb.net/fillingInThTheBlanks?retryWrites=true&w=majority`);
+  mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@${MONGO_CONNECT}`);
 }
 const replServer = repl.start('>>>');
 loadModels(replServer.context);

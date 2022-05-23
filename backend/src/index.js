@@ -5,8 +5,7 @@ const mongoose = require('mongoose');
 const Menu = require('./models/Menu');
 const app = express();
 
-console.log('process.env:', process.env.MONGO_PW);
-mongoose.connect(`mongodb+srv://admin:${process.env.MONGO_PW}@cluster0.hqyzi.mongodb.net/fillingInThTheBlanks?retryWrites=true&w=majority`);
+mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@${process.env.MONGO_CONNECT}`);
 
 const staticFiles = express.static(path.join(__dirname, '..', 'build'));
 app.use(staticFiles);

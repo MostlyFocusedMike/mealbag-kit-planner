@@ -14,7 +14,7 @@ const loadModels = (context) => {
     context[name] = require(filePath);
   });
   const mongoose = require('mongoose');
-  mongoose.connect('mongodb+srv://admin:rmuy1c5qUvcT4N6G@cluster0.hqyzi.mongodb.net/fillingInThTheBlanks?retryWrites=true&w=majority');
+  mongoose.connect(`mongodb+srv://admin:${process.env.MONGO_PW}@cluster0.hqyzi.mongodb.net/fillingInThTheBlanks?retryWrites=true&w=majority`);
 }
 const replServer = repl.start('>>>');
 loadModels(replServer.context);

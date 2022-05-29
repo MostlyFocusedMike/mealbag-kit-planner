@@ -12,3 +12,13 @@ table, td, th {
   border-collapse: collapse;
   padding: 0.1rem 0.5rem;
 }
+
+.menu {
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid black;
+}
+
+h2 {
+  margin-top: 0rem;
+}

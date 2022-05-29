@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Menu from "./Menu";
 
 const Menus = () => {
   const [menus, setMenus] = useState(null);
@@ -11,20 +12,7 @@ const Menus = () => {
   if (!menus) return;
   return <div>
     <h1>Menus</h1>
-    <nav>
-      {
-        menus.map(menu => (
-          <Link
-            key={menu.id}
-            to={`/menus/${menu.id}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {menu.name} |
-          </Link>)
-        )
-      }
-    </nav>
+    { menus.map(menu => <Menu key={menu.id} initMenu={menu} />) }
   </div>
 }
 

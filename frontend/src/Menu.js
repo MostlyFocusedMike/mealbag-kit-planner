@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Item from "./Item";
+import { useState } from "react";
 import Items from "./Items";
 
 const Menu = ({ initMenu }) => {
@@ -23,6 +22,7 @@ const Menu = ({ initMenu }) => {
 
   return <div className="menu">
     <h2>{menu.name}</h2>
+    <p>Number of Meals: {menu.numberOfPallets * 180}</p>
     <form onSubmit={handleSubmit}>
       <label>Number of Paletts:</label>
       <input type='number' value={menu.numberOfPallets} onChange={handleChange} />
@@ -36,7 +36,7 @@ const Menu = ({ initMenu }) => {
     >
       Go To Spreadsheet
     </Link>
-    <Items items={menu.items} />
+    <Items items={menu.items} numberOfPallets={menu.numberOfPallets} />
   </div>
 }
 

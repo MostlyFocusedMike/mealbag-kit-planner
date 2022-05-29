@@ -13,12 +13,29 @@ table, td, th {
   padding: 0.1rem 0.5rem;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+}
+
 .menu {
   margin: 1rem;
   padding: 1rem;
   border: 2px solid black;
+  display: inline-block;
+}
+
+.items {
+  height: 30rem;
+  border: 2px solid black;
+  overflow: scroll;
+  padding: 0.25rem;
 }
 
 h2 {
   margin-top: 0rem;
+}
+
+label {
+  display: block;
 }

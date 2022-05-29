@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import Item from "./Item";
+import Items from "./Items";
 
 const Menu = ({ initMenu }) => {
   const [menu, setMenu] = useState(initMenu);
-
-  useEffect(() => { console.log('menu:', menu); }, [menu])
 
   const handleChange = (e) => {
     setMenu({ ...menu, numberOfPallets: parseInt(e.target.value) })
@@ -12,7 +12,6 @@ const Menu = ({ initMenu }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hi')
     fetch(`/api/v1/menus/${menu.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -24,6 +23,11 @@ const Menu = ({ initMenu }) => {
 
   return <div className="menu">
     <h2>{menu.name}</h2>
+    <form onSubmit={handleSubmit}>
+      <label>Number of Paletts:</label>
+      <input type='number' value={menu.numberOfPallets} onChange={handleChange} />
+      <button>Update</button>
+    </form>
     <Link
       key={menu.id}
       to={`/menus/${menu.id}`}
@@ -32,11 +36,7 @@ const Menu = ({ initMenu }) => {
     >
       Go To Spreadsheet
     </Link>
-    <form onSubmit={handleSubmit}>
-      <label>Number of Paletts:</label>
-      <input type='number' value={menu.numberOfPallets} onChange={handleChange} />
-      <button>Update</button>
-    </form>
+    <Items items={menu.items} />
   </div>
 }
 

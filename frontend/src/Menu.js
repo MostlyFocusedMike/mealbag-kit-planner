@@ -9,13 +9,21 @@ const Menu = ({ initMenu }) => {
     setMenu({ ...menu, numberOfPallets: parseInt(e.target.value) })
   }
 
-  const handleItemChange = (e, idx) => {
+  const handleItemChange = (e) => {
     // I know this is mutating the existing state manually, but then immediately resetting it correctly
     const newMenu = { ...menu }
+    const { value, name, dataset: { idx } } = e.target;
     newMenu.items[idx] = {
       ...newMenu.items[idx],
-      [e.target.name]: e.target.value,
+      [name]: value,
     }
+    setMenu(newMenu);
+  }
+
+  const deleteItem = (e) => {
+    e.preventDefault();
+    const newMenu = { ...menu }
+    newMenu.items.splice(e.target.dataset.idx, 1);
     setMenu(newMenu);
   }
 
@@ -50,7 +58,8 @@ const Menu = ({ initMenu }) => {
             <Item 
               key={item.id} 
               idx={idx}
-              handleItemChange={handleItemChange} 
+              handleItemChange={handleItemChange}
+              deleteItem={deleteItem} 
               item={item} 
               numberOfPallets={numberOfPallets} 
             />

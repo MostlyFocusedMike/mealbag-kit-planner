@@ -32,6 +32,10 @@ ul {
   padding: 0.25rem;
 }
 
+.item {
+  border: 2px solid black;
+}
+
 h2 {
   margin-top: 0rem;
 }

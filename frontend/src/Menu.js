@@ -1,31 +1,38 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import Items from "./Items";
+import Item from "./Item";
 
 const Menu = ({ initMenu }) => {
   const [menu, setMenu] = useState(initMenu);
 
-  const handleChange = (e) => {
+  const handleMenuChange = (e) => {
     setMenu({ ...menu, numberOfPallets: parseInt(e.target.value) })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch(`/api/v1/menus/${menu.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(menu)
-    })
-      .then(r => r.json())
-      .then(console.log)
+  const handleItemChange = (e, idx) => {
+    // I know this is mutating the existing state manually, but then immediately resetting it correctly
+    const newMenu = { ...menu }
+    newMenu.items[idx] = {
+      ...newMenu.items[idx],
+      [e.target.name]: e.target.value,
+    }
+    setMenu(newMenu);
   }
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const options = { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(menu) }
+    const data = await fetch(`/api/v1/menus/${menu.id}`, options).then(r => r.json())
+    console.log('data:', data);
+  }
+
+  const { numberOfPallets, items } = menu;
   return <div className="menu">
     <h2>{menu.name}</h2>
     <p>Number of Meals: {menu.numberOfPallets * 180}</p>
     <form onSubmit={handleSubmit}>
       <label>Number of Paletts:</label>
-      <input type='number' value={menu.numberOfPallets} onChange={handleChange} />
+      <input type='number' value={menu.numberOfPallets} onChange={handleMenuChange} />
       <button>Update</button>
     </form>
     <Link
@@ -36,7 +43,22 @@ const Menu = ({ initMenu }) => {
     >
       Go To Spreadsheet
     </Link>
-    <Items items={menu.items} numberOfPallets={menu.numberOfPallets} />
+    <form onSubmit={handleSubmit}>
+      <ul className="items">
+        {
+          items.length && items.map((item, idx) => (
+            <Item 
+              key={item.id} 
+              idx={idx}
+              handleItemChange={handleItemChange} 
+              item={item} 
+              numberOfPallets={numberOfPallets} 
+            />
+            ))
+          }
+      </ul>
+      <button>Update Items</button>
+    </form>
   </div>
 }
 

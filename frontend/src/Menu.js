@@ -5,8 +5,10 @@ import NewItemModal from "./NewItemModal";
 
 const Menu = ({ initMenu }) => {
   const [menu, setMenu] = useState(initMenu);
-  const [isVisible, setIsVisible] = useState(false);
-  const toggleVisibility = () => setIsVisible(!isVisible);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isItemInfoVisible, setIsItemInfoVisible] = useState(false);
+  const toggleModalVisibility = () => setIsModalVisible(!isModalVisible);
+  const toggleItemInfoVisibility = () => setIsItemInfoVisible(!isItemInfoVisible);
 
   const handleMenuChange = (e) => {
     setMenu({ ...menu, numberOfPallets: parseInt(e.target.value) })
@@ -68,6 +70,7 @@ const Menu = ({ initMenu }) => {
             <Item 
               key={item.id} 
               idx={idx}
+              isItemInfoVisible={isItemInfoVisible}
               handleItemChange={handleItemChange}
               deleteItem={deleteItem} 
               item={item} 
@@ -76,12 +79,13 @@ const Menu = ({ initMenu }) => {
             ))
           }
       </ul>
+      <button onClick={toggleItemInfoVisibility}>{isItemInfoVisible ? 'Hide' : 'Show'} Item Info</button>
       <button>Update Items</button>
     </form>
-    <button onClick={() => setIsVisible(!isVisible)}>Add Item</button>
+    <button onClick={() => setIsModalVisible(!isModalVisible)}>Add Item</button>
     {
-      isVisible && <NewItemModal
-        toggleVisibility={toggleVisibility}
+      isModalVisible && <NewItemModal
+        toggleVisibility={toggleModalVisibility}
         addItem={addItem}
       />
     }

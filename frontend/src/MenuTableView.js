@@ -12,7 +12,7 @@ function MenuTableView() {
   if (!menu) return null;
 
   const numberOfMeals = menu.numberOfPallets * 12 * 15
-  const getNumberOfPacks = ({itemsPerPack}) => Math.ceil(numberOfMeals / itemsPerPack)
+  const getNumberOfPacks = ({itemsPerPack, itemsPerBag}) => Math.ceil(numberOfMeals * itemsPerBag / itemsPerPack)
   console.log('numberOfMeals:', numberOfMeals);
   return (
     <div className="menu-table-view">

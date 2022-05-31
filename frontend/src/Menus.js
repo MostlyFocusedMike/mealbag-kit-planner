@@ -10,7 +10,6 @@ const Menus = () => {
 
   if (!menus) return;
   return <div>
-    <h1>Menus</h1>
     { menus.map(menu => <Menu key={menu.id} initMenu={menu} />) }
   </div>
 }

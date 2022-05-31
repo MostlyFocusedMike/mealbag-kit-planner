@@ -5,7 +5,7 @@ POST http://localhost:8000/api/v1/menus
 content-type: application/json
 
 {
-  "name": "Menu 1",
+  "name": "Menu 4",
   "numberOfPallets": 4,
   "items": [
     {

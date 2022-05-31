@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Item from "./Item";
+import NewItemModal from "./NewItemModal";
 
 const Menu = ({ initMenu }) => {
   const [menu, setMenu] = useState(initMenu);
+  const [isVisible, setIsVisible] = useState(false);
+  const toggleVisibility = () => setIsVisible(!isVisible);
 
   const handleMenuChange = (e) => {
     setMenu({ ...menu, numberOfPallets: parseInt(e.target.value) })
@@ -68,6 +71,12 @@ const Menu = ({ initMenu }) => {
       </ul>
       <button>Update Items</button>
     </form>
+    <button onClick={() => setIsVisible(!isVisible)}>Add new ticket</button>
+    {
+      isVisible && <NewItemModal
+        toggleVisibility={toggleVisibility}
+      />
+    }
   </div>
 }
 

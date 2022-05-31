@@ -13,7 +13,6 @@ const Menu = ({ initMenu }) => {
   }
 
   const handleItemChange = (e) => {
-    // I know this is mutating the existing state manually, but then immediately resetting it correctly
     const newMenu = { ...menu }
     const { value, name, dataset: { idx } } = e.target;
     newMenu.items[idx] = {
@@ -27,6 +26,14 @@ const Menu = ({ initMenu }) => {
     e.preventDefault();
     const newMenu = { ...menu }
     newMenu.items.splice(e.target.dataset.idx, 1);
+    setMenu(newMenu);
+  }
+
+  const addItem = async (item) => {
+    const options = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(item) };
+    const newItem = await fetch(`/api/v1/menus/${menu.id}/items`, options).then(r => r.json())
+    const newMenu = { ...menu }
+    newMenu.items.push(newItem)
     setMenu(newMenu);
   }
 
@@ -71,10 +78,11 @@ const Menu = ({ initMenu }) => {
       </ul>
       <button>Update Items</button>
     </form>
-    <button onClick={() => setIsVisible(!isVisible)}>Add new ticket</button>
+    <button onClick={() => setIsVisible(!isVisible)}>Add Item</button>
     {
       isVisible && <NewItemModal
         toggleVisibility={toggleVisibility}
+        addItem={addItem}
       />
     }
   </div>

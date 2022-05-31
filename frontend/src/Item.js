@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemInfoVisible }) => {
   const handleChange = (e) => { handleItemChange(e,idx) };
   const numberOfPacks = Math.ceil((numberOfPallets * 180 * item.itemsPerBag) / item.itemsPerPack);

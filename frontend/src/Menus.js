@@ -9,7 +9,7 @@ const Menus = () => {
   }, []);
 
   if (!menus) return;
-  return <div>
+  return <div id="menus">
     { menus.map(menu => <Menu key={menu.id} initMenu={menu} />) }
   </div>
 }

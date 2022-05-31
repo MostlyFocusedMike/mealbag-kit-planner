@@ -48,7 +48,8 @@ const Menu = ({ initMenu }) => {
 
   const { numberOfPallets, items } = menu;
   return <div className="menu">
-    <h2>{menu.name}</h2>
+    <h2 className="menu-name">{menu.name}</h2>
+    <hr className="menu-line" />
     <p>Number of Meals: {menu.numberOfPallets * 180}</p>
     <form onSubmit={handleSubmit}>
       <label>Number of Paletts:</label>

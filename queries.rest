@@ -37,7 +37,7 @@ content-type: application/json
 }
 
 ##################################
-GET http://localhost:8000/api/v1/menus/62886863a457477e468538c4
+GET http://localhost:8000/api/v1/menus/6289c8fcf618b5d92e3af824
 
 
 #############################
@@ -69,4 +69,14 @@ content-type: application/json
       "itemsPerPack": 10
     }
   ]
+}
+
+############################################
+POST http://localhost:8000/api/v1/menus/6289c8fcf618b5d92e3af824/items
+content-type: application/json
+
+{
+  "name": "TEST 2",
+  "itemsPerBag": 3,
+  "itemsPerPack": 13
 }

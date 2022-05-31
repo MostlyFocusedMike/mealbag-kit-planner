@@ -22,6 +22,13 @@ class Menu {
     return this.model.findOneAndUpdate({_id: id}, {$set: newMenu}, {new: true});
   }
 
+  static addItem = async (menuId, newItem) => {
+    const menu = await this.model.findById(menuId);
+    menu.items.push(newItem)
+    await menu.save();
+    return menu.items.slice(-1)[0];
+  }
+
   static delete = async (id) => {
     return this.model.deleteOne({ _id: id });
   }

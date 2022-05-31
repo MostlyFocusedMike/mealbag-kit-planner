@@ -37,6 +37,11 @@ app.put('/api/v1/menus/:menuId', async ({params, body}, res) => {
   res.json(menu)
 })
 
+app.post('/api/v1/menus/:menuId/items', async ({params, body}, res) => {
+  const menu = await Menu.addItem(params.menuId, body)
+  res.json(menu)
+})
+
 const port = process.env.PORT || 8000;
 app.listen(port, '0.0.0.0', async () => {
     console.log(`Example app listening on port 'http://localhost:${port}`);

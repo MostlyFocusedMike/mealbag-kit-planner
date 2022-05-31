@@ -92,13 +92,37 @@ a:active {
 
 .items {
   height: 30rem;
-  border: 2px solid black;
   overflow: scroll;
   padding: 0.25rem;
 }
 
 .item {
-  border: 2px solid black;
+  background-color: rgb(42, 44, 48);
+  padding: 0.2rem;
+  margin: 0.4rem;
+}
+
+.item-info {
+  padding: 1rem;
+}
+.item h3 {
+  font-size: 1.5rem;
+  margin: 0.2rem;
+  text-align: center;
+}
+
+.item div {
+  margin-left: 2rem;
+}
+
+.item input, .item label {
+  display: inline;
+}
+
+.item button {
+  display: block;
+  text-align: center;
+  margin: 0.5rem auto;
 }
 
 label {

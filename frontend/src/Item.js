@@ -9,6 +9,8 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
     {
       isItemInfoVisible &&
         <div className="item-info">
+          <div>
+            
           <label>Items Per Bag: </label>
           <input 
             type="number" 
@@ -19,6 +21,9 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
             name="itemsPerBag" 
             onChange={handleChange}
             />
+          </div>
+          <div>
+
           <label>Items Per Pack: </label>
           <input 
             type="number" 
@@ -29,6 +34,7 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
             name="itemsPerPack" 
             onChange={handleChange}
             />
+            </div>
           { !!extraItems && <span>(Extra items:{extraItems})</span> }
           <button onClick={deleteItem} data-idx={idx}>Delete</button>
         </div>

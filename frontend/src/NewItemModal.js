@@ -47,16 +47,24 @@ const NewItemModal = ({ toggleVisibility, addItem }) => {
 
   return <div id='modal-backdrop' onClick={handleBackdropClick}>
     <div id='new-ticket-modal' onKeyUp={setShiftKey} onKeyDown={setShiftKey}>
-      <button onKeyDown={forwardTrapFocus} onClick={toggleVisibility} ref={xButton}>X</button>
-      <h2>Create New Ticket</h2>
+      <div id='modal-top'>
+        <button id="x-button" onKeyDown={forwardTrapFocus} onClick={toggleVisibility} ref={xButton}>X</button>
+        <h2 id="modal-title">Create New Ticket</h2>
+      </div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name</label>
-        <input type='text' id='name' name='name' value={item.name} onChange={handleChange} />
-        <label htmlFor='items-per-bag'>Items Per Bag</label>
-        <input type='number' min="1" max="99" id='items-per-bag' name='itemsPerBag' value={item.itemsPerBag} onChange={handleChange} />
-        <label htmlFor='items-per-pack'>Items Per Pack</label>
-        <input type='number' min="1" max="99" id='items-per-pack' name='itemsPerPack' value={item.itemsPerPack} onChange={handleChange} />
-        <button onKeyDown={reverseTrapFocus} ref={submitButton}>Add Item</button>
+        <div className="modal-group">
+          <label className="modal-label" htmlFor='name'>Name: </label>
+          <input type='text' id='name' name='name' value={item.name} onChange={handleChange} />
+        </div>
+        <div className="modal-group">
+          <label htmlFor='items-per-bag' className="modal-label">Items Per Bag: </label>
+          <input type='number' min="1" max="99" id='items-per-bag' name='itemsPerBag' value={item.itemsPerBag} onChange={handleChange} />
+        </div>
+        <div className="modal-group">
+          <label className="modal-label" htmlFor='items-per-pack'>Items Per Pack: </label>
+          <input type='number' min="1" max="99" id='items-per-pack' name='itemsPerPack' value={item.itemsPerPack} onChange={handleChange} />
+        </div>
+        <button id="modal-submit" onKeyDown={reverseTrapFocus} ref={submitButton}>Add Item</button>
       </form>
     </div>
   </div>

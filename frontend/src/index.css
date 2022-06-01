@@ -43,6 +43,23 @@ ul {
   width: 20%;
 }
 
+.menu-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 1.2rem;
+}
+
+.inputs {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.menu-form input, .menu-form label {
+  display: inline-block;
+}
+
 button {
 	background-color: rgb(154,47, 122);
 	border-radius: 5%;
@@ -72,17 +89,17 @@ a {
 }
 
 a:link {
-  color: hotpink;
+  color: rgb(237,112,45);
 }
 
 /* visited link */
 a:visited {
-  color: hotpink;
+  color: rgb(237,112,45);
 }
 
 /* mouse over link */
 a:hover {
-  color: rgb(237,112,45);
+  color: hotpink;;
 }
 
 /* selected link */
@@ -94,17 +111,20 @@ a:active {
   height: 30rem;
   overflow: scroll;
   padding: 0.25rem;
+  background-color: rgb(22, 22, 22);
+  border-radius: 2%;
 }
 
 .item {
   background-color: rgb(42, 44, 48);
-  padding: 0.2rem;
+  padding: 0.35rem;
   margin: 0.4rem;
 }
 
 .item-info {
-  padding: 1rem;
+  padding: 1rem 1rem 0;
 }
+
 .item h3 {
   font-size: 1.5rem;
   margin: 0.2rem;
@@ -117,6 +137,8 @@ a:active {
 
 .item input, .item label {
   display: inline;
+  font-size: 1.25rem;
+  margin: 0.1rem;
 }
 
 .item button {
@@ -129,6 +151,22 @@ label {
   display: block;
 }
 
+.item-editor-buttons {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.add-item-button {
+  display: block;
+  margin: 1rem auto 0;
+  background-color: rgb(206, 96, 37);
+}
+
+
+
+/* ************ */
+/* Modal Styles */
 #modal-backdrop {
   position: fixed;
   top: 0;

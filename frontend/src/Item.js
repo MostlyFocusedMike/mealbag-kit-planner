@@ -10,32 +10,30 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
       isItemInfoVisible &&
         <div className="item-info">
           <div>
-            
-          <label>Items Per Bag: </label>
-          <input 
-            type="number" 
-            min="1"
-            max="99"
-            data-idx={idx}
-            value={itemsPerBag} 
-            name="itemsPerBag" 
-            onChange={handleChange}
+            <label>Items Per Bag: </label>
+            <input 
+              type="number" 
+              min="1"
+              max="99"
+              data-idx={idx}
+              value={itemsPerBag} 
+              name="itemsPerBag" 
+              onChange={handleChange}
             />
           </div>
           <div>
-
-          <label>Items Per Pack: </label>
-          <input 
-            type="number" 
-            min="1"
-            max="99"
-            data-idx={idx}
-            value={itemsPerPack} 
-            name="itemsPerPack" 
-            onChange={handleChange}
+            <label>Items Per Pack: </label>
+            <input 
+              type="number" 
+              min="1"
+              max="99"
+              data-idx={idx}
+              value={itemsPerPack} 
+              name="itemsPerPack" 
+              onChange={handleChange}
             />
-            </div>
-          { !!extraItems && <span>(Extra items:{extraItems})</span> }
+            { !!extraItems && <span> (Extra items:{extraItems})</span> }
+          </div>
           <button onClick={deleteItem} data-idx={idx}>Delete</button>
         </div>
     }

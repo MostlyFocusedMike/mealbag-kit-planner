@@ -50,10 +50,12 @@ const Menu = ({ initMenu }) => {
   return <div className="menu">
     <h2 className="menu-name">{menu.name}</h2>
     <hr className="menu-line" />
-    <p>Number of Meals: {menu.numberOfPallets * 180}</p>
-    <form onSubmit={handleSubmit}>
-      <label>Number of Paletts:</label>
-      <input type='number' value={menu.numberOfPallets} onChange={handleMenuChange} />
+    <form className="menu-form" onSubmit={handleSubmit}>
+      <p>Number of Meals: {menu.numberOfPallets * 180}</p>
+      <div className="inputs">
+        <label>Number of Paletts: </label>
+        <input type='number' min="1" max="99" value={menu.numberOfPallets} onChange={handleMenuChange} />
+      </div>
       <button>Update</button>
     </form>
     <Link
@@ -80,10 +82,12 @@ const Menu = ({ initMenu }) => {
             ))
           }
       </ul>
-      <button onClick={toggleItemInfoVisibility}>{isItemInfoVisible ? 'Hide' : 'Show'} Item Info</button>
-      <button>Update Items</button>
+      <div className="item-editor-buttons">
+        <button type="button" onClick={toggleItemInfoVisibility}>{isItemInfoVisible ? 'Hide' : 'Show'} Item Info</button>
+        <button>Update Items</button>
+      </div>
     </form>
-    <button onClick={() => setIsModalVisible(!isModalVisible)}>Add Item</button>
+    <button className="add-item-button" onClick={() => setIsModalVisible(!isModalVisible)}>Add Item</button>
     {
       isModalVisible && <NewItemModal
         toggleVisibility={toggleModalVisibility}

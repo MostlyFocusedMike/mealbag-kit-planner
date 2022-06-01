@@ -49,7 +49,7 @@ const NewItemModal = ({ toggleVisibility, addItem }) => {
     <div id='new-ticket-modal' onKeyUp={setShiftKey} onKeyDown={setShiftKey}>
       <div id='modal-top'>
         <button id="x-button" onKeyDown={forwardTrapFocus} onClick={toggleVisibility} ref={xButton}>X</button>
-        <h2 id="modal-title">Create New Ticket</h2>
+        <h2 id="modal-title">Add New Item</h2>
       </div>
       <form onSubmit={handleSubmit}>
         <div className="modal-group">

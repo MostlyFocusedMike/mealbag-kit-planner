@@ -34,7 +34,7 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
             />
             { !!extraItems && <span> (Extra items:{extraItems})</span> }
           </div>
-          <button onClick={deleteItem} data-idx={idx}>Delete</button>
+          <button type='button' onClick={deleteItem} data-idx={idx}>Delete</button>
         </div>
     }
   </li>

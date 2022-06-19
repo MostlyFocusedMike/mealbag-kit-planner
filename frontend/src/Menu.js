@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Item from "./Item";
 import NewItemModal from "./NewItemModal";
+
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+  useEffect(
+    () => {
+      const handler = setTimeout(() => { setDebouncedValue(value); }, delay);
+      return () => { clearTimeout(handler); };
+    },
+    [value, delay] 
+  );
+  return debouncedValue;
+}
 
 const Menu = ({ initMenu }) => {
   const [menu, setMenu] = useState(initMenu);
@@ -13,6 +25,13 @@ const Menu = ({ initMenu }) => {
   const handleMenuChange = (e) => {
     setMenu({ ...menu, numberOfPallets: parseInt(e.target.value) })
   }
+
+  const deferredValue = useDebounce(menu, 750);
+  useMemo(async () => {
+    const options = { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(menu) }
+    const data = await fetch(`/api/v1/menus/${menu.id}`, options).then(r => r.json())
+    console.log('data:', data);
+  }, [deferredValue])
 
   const handleItemChange = (e) => {
     const newMenu = { ...menu }
@@ -56,7 +75,6 @@ const Menu = ({ initMenu }) => {
         <label>Number of Paletts: </label>
         <input type='number' min="1" max="99" value={menu.numberOfPallets} onChange={handleMenuChange} />
       </div>
-      <button>Update</button>
     </form>
     <Link
       key={menu.id}
@@ -84,7 +102,6 @@ const Menu = ({ initMenu }) => {
       </ul>
       <div className="item-editor-buttons">
         <button type="button" onClick={toggleItemInfoVisibility}>{isItemInfoVisible ? 'Hide' : 'Show'} Item Info</button>
-        <button>Update Items</button>
       </div>
     </form>
     <button className="add-item-button" onClick={() => setIsModalVisible(!isModalVisible)}>Add Item</button>

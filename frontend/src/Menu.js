@@ -87,7 +87,7 @@ const Menu = ({ initMenu }) => {
     <form onSubmit={handleSubmit}>
       <ul className="items">
         {
-          items.length && items.map((item, idx) => (
+          !!items.length && items.map((item, idx) => (
             <Item 
               key={item.id} 
               idx={idx}

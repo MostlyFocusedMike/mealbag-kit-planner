@@ -23,6 +23,10 @@ app.get('/api/v1/menus', async (req, res) => {
   res.json(menus)
 })
 
+app.get('/api/v1/health', async (req, res) => {
+  res.json({ msg: 'OK' });
+})
+
 app.get('/api/v1/menus/:menuId', async (req, res) => {
   const menu = await Menu.findById(req.params.menuId)
   res.json(menu)

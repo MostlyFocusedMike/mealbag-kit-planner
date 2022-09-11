@@ -1,4 +1,4 @@
-const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemInfoVisible }) => {
+const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemInfoVisible, handleItemIncrement }) => {
   // isItemInfoVisible not sure if I want this anymore
   const handleChange = (e) => { handleItemChange(e,idx) };
   const numberOfPacks = Math.ceil((numberOfPallets * 180 * item.itemsPerBag) / item.itemsPerPack);
@@ -21,6 +21,22 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
               name="itemsPerBag"
               onChange={handleChange}
             />
+            <button
+              type="button"
+              className='plus-minus'
+              data-val={1}
+              data-idx={idx}
+              data-name="itemsPerBag"
+              onClick={handleItemIncrement}
+            > + </button>
+            <button
+              type="button"
+              className='plus-minus'
+              data-val={-1}
+              data-idx={idx}
+              data-name="itemsPerBag"
+              onClick={handleItemIncrement}
+              > - </button>
           </div>
           <div>
             <label>Items Per Pack: </label>
@@ -33,6 +49,22 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
               name="itemsPerPack"
               onChange={handleChange}
             />
+                        <button
+              type="button"
+              className='plus-minus'
+              data-val={1}
+              data-idx={idx}
+              data-name="itemsPerPack"
+              onClick={handleItemIncrement}
+            > + </button>
+            <button
+              type="button"
+              className='plus-minus'
+              data-val={-1}
+              data-idx={idx}
+              data-name="itemsPerPack"
+              onClick={handleItemIncrement}
+              > - </button>
             { !!extraItems && <span> (Extra items:{extraItems})</span> }
           </div>
           <button type='button' onClick={deleteItem} data-idx={idx}>Delete</button>

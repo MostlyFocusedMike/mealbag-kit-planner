@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import Item from "./Item";
 import NewItemModal from "./NewItemModal";
+import { clone } from "./utils/just-clone";
 
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -18,9 +19,7 @@ function useDebounce(value, delay) {
 const Menu = ({ initMenu }) => {
   const [menu, setMenu] = useState(initMenu);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isItemInfoVisible, setIsItemInfoVisible] = useState(false);
   const toggleModalVisibility = () => setIsModalVisible(!isModalVisible);
-  const toggleItemInfoVisibility = () => setIsItemInfoVisible(!isItemInfoVisible);
 
   const handleMenuChange = (e) => {
     setMenu({ ...menu, numberOfPallets: parseInt(e.target.value) })
@@ -42,6 +41,23 @@ const Menu = ({ initMenu }) => {
     }
     setMenu(newMenu);
   }
+
+  const handleItemIncrement = (e) => {
+    console.log('Helo?:', );
+    const newMenu = clone(menu);
+
+    const { dataset: { idx, val, name } } = e.target;
+    let newNumberVal = parseInt(newMenu.items[idx][name]) + parseInt(val)
+    newNumberVal = newNumberVal > 0 ? newNumberVal : 1;
+    newNumberVal = newNumberVal < 100 ? newNumberVal : 99;
+
+    newMenu.items[idx] = {
+      ...newMenu.items[idx],
+      [name]: newNumberVal,
+    }
+    setMenu(newMenu);
+  }
+
 
   const deleteItem = (e) => {
     e.preventDefault();
@@ -93,6 +109,7 @@ const Menu = ({ initMenu }) => {
               idx={idx}
               isItemInfoVisible="true"
               handleItemChange={handleItemChange}
+              handleItemIncrement={handleItemIncrement}
               deleteItem={deleteItem}
               item={item}
               numberOfPallets={numberOfPallets}

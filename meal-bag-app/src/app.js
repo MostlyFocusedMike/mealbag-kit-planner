@@ -1,11 +1,12 @@
-require('dotenv').config()
+// this file seems to have to be called app.js for elastic beanstalk, even though there
 const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 const Menu = require('./models/Menu');
-const app = express();
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@${process.env.MONGO_CONNECT}`);
+const app = express();
+const uri = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@${process.env.MONGO_CONNECT}`;
+mongoose.connect(uri);
 
 const staticFiles = express.static(path.join(__dirname, '..', 'build'));
 app.use(staticFiles);

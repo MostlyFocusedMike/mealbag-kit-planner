@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  srv:
+    build: './meal-bag-app'
+    ports:
+      - '8000:8000'
+    env_file: './meal-bag-app/.env'
+    volumes:
+      - ./meal-bag-app/src/:/usr/app/src/
+      - ./meal-bag-app/package.json:/usr/app/package.json
+    container_name: srv
+
+  front:
+    build: './frontend'
+    ports:
+      - '3000:3000'
+    container_name: front

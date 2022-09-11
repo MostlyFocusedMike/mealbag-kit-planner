@@ -24,9 +24,9 @@ ul {
   color:rgb(255, 255, 255);
   margin: 0.5rem;
   padding: 1rem;
-  width: 28%;
-  min-width: 23rem;
-  border-radius: 2rem 0.2rem 0.2rem 0.2rem;
+  width: 25%;
+  min-width: 20rem;
+  border-radius: 1rem;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0,0,0,0.3);
 }
 
@@ -221,13 +221,13 @@ label {
 /* ***************** */
 /* Table view styles */
 #menu-table-view {
-  width: 100%;
   height: 100vh;
   background-color: #fff;
-  font-size: 2rem;
 }
 
 #menu-table {
+  font-size: 3vw;
+  width: 80%;
   margin: 0 auto;
 }
 

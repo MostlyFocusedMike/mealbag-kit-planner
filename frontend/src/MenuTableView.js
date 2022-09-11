@@ -19,23 +19,27 @@ function MenuTableView() {
       <table id="menu-table">
         <caption>
           <h1 id="menu-table-name">{menu.name}</h1>
-          # Meals: <b>{numberOfMeals}</b> | # Pallets: <b>{menu.numberOfPallets}</b> 
+          # Meals: <b>{numberOfMeals}</b> | # Pallets: <b>{menu.numberOfPallets}</b>
         </caption>
         <thead>
           <tr>
             <th>Items Per Bag</th>
             <th>Number of Packs</th>
             <th>Item Name</th>
+            <th>Extra Items</th>
           </tr>
         </thead>
         <tbody>
           {
             menu.items.map(item => {
+              const numberOfPacks = Math.ceil((menu.numberOfPallets * 180 * item.itemsPerBag) / item.itemsPerPack);
+              const extraItems = (numberOfPacks * item.itemsPerPack) - (menu.numberOfPallets * 180 * item.itemsPerBag);
               return (
                 <tr key={item.id}>
                   <td>{item.itemsPerBag}</td>
                   <td>{getNumberOfPacks(item)}</td>
                   <td>{item.name}</td>
+                  <td>{extraItems}</td>
                 </tr>
               )
             })

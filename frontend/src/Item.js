@@ -1,8 +1,6 @@
-const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemInfoVisible, handleItemIncrement }) => {
+const Item = ({item, handleItemChange, idx, deleteItem, isItemInfoVisible, handleItemIncrement }) => {
   // isItemInfoVisible not sure if I want this anymore
   const handleChange = (e) => { handleItemChange(e,idx) };
-  const numberOfPacks = Math.ceil((numberOfPallets * 180 * item.itemsPerBag) / item.itemsPerPack);
-  const extraItems = (numberOfPacks * item.itemsPerPack) - (numberOfPallets * 180 * item.itemsPerBag);
   // TODO: pretty sure the extra items math is wrong, and doesn't handle items per bag
   const { itemsPerBag, itemsPerPack } = item;
   return <li className="item">
@@ -76,7 +74,6 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
                 > − </button>
               </div>
           </div>
-          { !!extraItems && <span> (Extra items:{extraItems})</span> }
           <button className="danger" type='button' onClick={deleteItem} data-idx={idx}>DELETE</button>
         </div>
     }

@@ -112,7 +112,6 @@ const Menu = ({ initMenu }) => {
               handleItemIncrement={handleItemIncrement}
               deleteItem={deleteItem}
               item={item}
-              numberOfPallets={numberOfPallets}
             />
             ))
           }

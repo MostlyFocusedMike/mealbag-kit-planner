@@ -45,6 +45,15 @@ const NewItemModal = ({ toggleVisibility, addItem }) => {
     })
   }
 
+  const handleItemIncrement = (e) => {
+    const { dataset: { val, name } } = e.target;
+    let newNumberVal = parseInt(item[name]) + parseInt(val)
+    console.log('newNumberVal:', newNumberVal);
+    newNumberVal = newNumberVal > 0 ? newNumberVal : 1;
+    newNumberVal = newNumberVal < 100 ? newNumberVal : 99;
+    setItem({ ...item, [name]: newNumberVal })
+  }
+
   return <div id='modal-backdrop' onClick={handleBackdropClick}>
     <div id='new-ticket-modal' onKeyUp={setShiftKey} onKeyDown={setShiftKey}>
       <div id='modal-top'>
@@ -59,10 +68,42 @@ const NewItemModal = ({ toggleVisibility, addItem }) => {
         <div className="modal-group">
           <label htmlFor='items-per-bag' className="modal-label">Items Per Bag: </label>
           <input type='number' min="1" max="99" id='items-per-bag' name='itemsPerBag' value={item.itemsPerBag} onChange={handleChange} />
+          <div className="plus-minus-container">
+              <button
+                type="button"
+                className='plus-minus'
+                data-val={1}
+                data-name="itemsPerBag"
+                onClick={handleItemIncrement}
+              > + </button>
+              <button
+                type="button"
+                className='plus-minus'
+                data-val={-1}
+                data-name="itemsPerBag"
+                onClick={handleItemIncrement}
+                > − </button>
+            </div>
         </div>
         <div className="modal-group">
           <label className="modal-label" htmlFor='items-per-pack'>Items Per Pack: </label>
           <input type='number' min="1" max="99" id='items-per-pack' name='itemsPerPack' value={item.itemsPerPack} onChange={handleChange} />
+          <div className="plus-minus-container">
+              <button
+                type="button"
+                className='plus-minus'
+                data-val={1}
+                data-name="itemsPerPack"
+                onClick={handleItemIncrement}
+              > + </button>
+              <button
+                type="button"
+                className='plus-minus'
+                data-val={-1}
+                data-name="itemsPerPack"
+                onClick={handleItemIncrement}
+                > − </button>
+            </div>
         </div>
         <button id="modal-submit" onKeyDown={reverseTrapFocus} ref={submitButton}>Add Item</button>
       </form>

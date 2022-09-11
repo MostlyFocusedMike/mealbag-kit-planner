@@ -1,4 +1,5 @@
 const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemInfoVisible }) => {
+  // isItemInfoVisible not sure if I want this anymore
   const handleChange = (e) => { handleItemChange(e,idx) };
   const numberOfPacks = Math.ceil((numberOfPallets * 180 * item.itemsPerBag) / item.itemsPerPack);
   const extraItems = (numberOfPacks * item.itemsPerPack) - (numberOfPallets * 180 * item.itemsPerBag);
@@ -11,25 +12,25 @@ const Item = ({item, numberOfPallets, handleItemChange, idx, deleteItem, isItemI
         <div className="item-info">
           <div>
             <label>Items Per Bag: </label>
-            <input 
-              type="number" 
+            <input
+              type="number"
               min="1"
               max="99"
               data-idx={idx}
-              value={itemsPerBag} 
-              name="itemsPerBag" 
+              value={itemsPerBag}
+              name="itemsPerBag"
               onChange={handleChange}
             />
           </div>
           <div>
             <label>Items Per Pack: </label>
-            <input 
-              type="number" 
+            <input
+              type="number"
               min="1"
               max="99"
               data-idx={idx}
-              value={itemsPerPack} 
-              name="itemsPerPack" 
+              value={itemsPerPack}
+              name="itemsPerPack"
               onChange={handleChange}
             />
             { !!extraItems && <span> (Extra items:{extraItems})</span> }

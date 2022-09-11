@@ -10,7 +10,7 @@ function useDebounce(value, delay) {
       const handler = setTimeout(() => { setDebouncedValue(value); }, delay);
       return () => { clearTimeout(handler); };
     },
-    [value, delay] 
+    [value, delay]
   );
   return debouncedValue;
 }
@@ -82,27 +82,24 @@ const Menu = ({ initMenu }) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-      Go To Spreadsheet
+      See warehouse spreadsheet
     </Link>
     <form onSubmit={handleSubmit}>
       <ul className="items">
         {
           !!items.length && items.map((item, idx) => (
-            <Item 
-              key={item.id} 
+            <Item
+              key={item.id}
               idx={idx}
-              isItemInfoVisible={isItemInfoVisible}
+              isItemInfoVisible="true"
               handleItemChange={handleItemChange}
-              deleteItem={deleteItem} 
-              item={item} 
-              numberOfPallets={numberOfPallets} 
+              deleteItem={deleteItem}
+              item={item}
+              numberOfPallets={numberOfPallets}
             />
             ))
           }
       </ul>
-      <div className="item-editor-buttons">
-        <button type="button" onClick={toggleItemInfoVisibility}>{isItemInfoVisible ? 'Hide' : 'Show'} Item Info</button>
-      </div>
     </form>
     <button className="add-item-button" onClick={() => setIsModalVisible(!isModalVisible)}>Add Item</button>
     {

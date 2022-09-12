@@ -256,7 +256,7 @@ label {
 
 #menu-table {
   font-size: 3vw;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -267,5 +267,10 @@ label {
 table, td, th {
   border: 2px solid #555;
   border-collapse: collapse;
-  padding: 0.1rem 1rem;
+  padding: 0.1rem 0.1rem;
+  text-align: center;
+}
+
+td.red {
+  color: red;
 }

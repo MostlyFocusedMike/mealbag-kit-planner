@@ -34,12 +34,13 @@ function MenuTableView() {
             menu.items.map(item => {
               const numberOfPacks = Math.ceil((menu.numberOfPallets * 180 * item.itemsPerBag) / item.itemsPerPack);
               const extraItems = (numberOfPacks * item.itemsPerPack) - (menu.numberOfPallets * 180 * item.itemsPerBag);
+              console.log('extraItems:', extraItems, typeof extraItems);
               return (
                 <tr key={item.id}>
                   <td>{item.itemsPerBag}</td>
                   <td>{getNumberOfPacks(item)}</td>
                   <td>{item.name}</td>
-                  <td>{extraItems}</td>
+                  <td className={extraItems ? 'red' : 'black'}>{extraItems}</td>
                 </tr>
               )
             })

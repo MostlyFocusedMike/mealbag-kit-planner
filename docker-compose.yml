@@ -17,5 +17,6 @@ services:
       - '3000:3000'
     volumes:
       - ./frontend/src/:/usr/app/src/
+      - ./frontend/public/:/usr/app/public/
       - ./frontend/package.json:/usr/app/package.json
     container_name: front

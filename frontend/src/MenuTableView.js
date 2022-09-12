@@ -13,7 +13,6 @@ function MenuTableView() {
 
   const numberOfMeals = menu.numberOfPallets * 12 * 15
   const getNumberOfPacks = ({itemsPerPack, itemsPerBag}) => Math.ceil(numberOfMeals * itemsPerBag / itemsPerPack)
-  console.log('numberOfMeals:', numberOfMeals);
   return (
     <div id="menu-table-view">
       <table id="menu-table">
@@ -31,7 +30,7 @@ function MenuTableView() {
         </thead>
         <tbody>
           {
-            menu.items.map(item => {
+            menu.items.reverse().map(item => {
               const numberOfPacks = Math.ceil((menu.numberOfPallets * 180 * item.itemsPerBag) / item.itemsPerPack);
               const extraItems = (numberOfPacks * item.itemsPerPack) - (menu.numberOfPallets * 180 * item.itemsPerBag);
               console.log('extraItems:', extraItems, typeof extraItems);

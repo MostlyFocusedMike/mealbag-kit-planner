@@ -86,7 +86,7 @@ const NewItemModal = ({ toggleVisibility, addItem }) => {
             </div>
         </div>
         <div className="modal-group">
-          <label className="modal-label" htmlFor='items-per-pack'>Items Per Pack: </label>
+          <label className="modal-label" htmlFor='items-per-pack'>Items Per Case: </label>
           <input type='number' min="1" max="99" id='items-per-pack' name='itemsPerPack' value={item.itemsPerPack} onChange={handleChange} />
           <div className="plus-minus-container">
               <button

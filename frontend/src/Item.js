@@ -44,7 +44,7 @@ const Item = ({item, handleItemChange, idx, deleteItem, isItemInfoVisible, handl
           <div className="pack-info">
             <div className="item-info-label-input">
 
-              <label>Items Per Pack: </label>
+              <label>Items Per Case: </label>
               <input
                 type="number"
                 min="1"

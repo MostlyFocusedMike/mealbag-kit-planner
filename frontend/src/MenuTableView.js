@@ -23,7 +23,7 @@ function MenuTableView() {
         <thead>
           <tr>
             <th>Items Per Bag</th>
-            <th>Number of Packs</th>
+            <th>Number of Cases</th>
             <th>Item Name</th>
             <th>Extra Items</th>
           </tr>

@@ -24,7 +24,7 @@ class Menu {
 
   static addItem = async (menuId, newItem) => {
     const menu = await this.model.findById(menuId);
-    menu.items.push(newItem)
+    menu.items.unshift(newItem)
     await menu.save();
     return menu.items.slice(-1)[0];
   }

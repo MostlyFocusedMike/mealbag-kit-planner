@@ -43,7 +43,6 @@ const Menu = ({ initMenu }) => {
   }
 
   const handleItemIncrement = (e) => {
-    console.log('Helo?:', );
     const newMenu = clone(menu);
 
     const { dataset: { idx, val, name } } = e.target;
@@ -70,7 +69,7 @@ const Menu = ({ initMenu }) => {
     const options = { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(item) };
     const newItem = await fetch(`/api/v1/menus/${menu.id}/items`, options).then(r => r.json())
     const newMenu = { ...menu }
-    newMenu.items.push(newItem)
+    newMenu.items.unshift(newItem)
     setMenu(newMenu);
   }
 
